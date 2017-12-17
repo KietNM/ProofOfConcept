@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AdventureWorks2012Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AdventureWorks2012.Poc.Account' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountNumber" />
+          </Key>
+          <Property Name="AccountNumber" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AdventureWorks2012.Poc.Balance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Balance">
+          <Key>
+            <PropertyRef Name="AccountNumber" />
+            <PropertyRef Name="Balance" />
+            <PropertyRef Name="Currency" />
+          </Key>
+          <Property Name="AccountNumber" Type="bigint" Nullable="false" />
+          <Property Name="Balance" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Currency" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AdventureWorks2012.Poc.Currency' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="CurrencyName" />
+          </Key>
+          <Property Name="Currency" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Country" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AdventureWorks2012.Poc.Transaction' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="AccountNumber" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="AccountNumber" Type="bigint" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Currency" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="Type" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <Function Name="GetBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Poc">
+          <Parameter Name="accountNumber" Type="bigint" Mode="In" />
+        </Function>
+        <EntityContainer Name="AdventureWorks2012ModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" store:Type="Tables" store:Schema="Poc">
+            <DefiningQuery>SELECT 
+    [Account].[AccountNumber] AS [AccountNumber]
+    FROM [Poc].[Account] AS [Account]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Balance" EntityType="Self.Balance" store:Type="Tables" store:Schema="Poc">
+            <DefiningQuery>SELECT 
+    [Balance].[AccountNumber] AS [AccountNumber], 
+    [Balance].[Balance] AS [Balance], 
+    [Balance].[Currency] AS [Currency]
+    FROM [Poc].[Balance] AS [Balance]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Currency" EntityType="Self.Currency" store:Type="Tables" store:Schema="Poc">
+            <DefiningQuery>SELECT 
+    [Currency].[Currency] AS [Currency], 
+    [Currency].[Country] AS [Country], 
+    [Currency].[CurrencyName] AS [CurrencyName]
+    FROM [Poc].[Currency] AS [Currency]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Transaction" EntityType="Self.Transaction" store:Type="Tables" store:Schema="Poc">
+            <DefiningQuery>SELECT 
+    [Transaction].[AccountNumber] AS [AccountNumber], 
+    [Transaction].[Amount] AS [Amount], 
+    [Transaction].[Currency] AS [Currency], 
+    [Transaction].[Type] AS [Type]
+    FROM [Poc].[Transaction] AS [Transaction]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdventureWorks2012Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountNumber" />
+          </Key>
+          <Property Name="AccountNumber" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Balance">
+          <Key>
+            <PropertyRef Name="AccountNumber" />
+            <PropertyRef Name="Balance1" />
+            <PropertyRef Name="Currency" />
+          </Key>
+          <Property Name="AccountNumber" Type="Int64" Nullable="false" />
+          <Property Name="Balance1" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Currency1" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="CurrencyName" />
+          </Key>
+          <Property Name="Currency1" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Country" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CurrencyName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transaction">
+          <Key>
+            <PropertyRef Name="AccountNumber" />
+            <PropertyRef Name="Amount" />
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="AccountNumber" Type="Int64" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
+          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="AdventureWorks2012Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Accounts" EntityType="Self.Account" />
+          <EntitySet Name="Balances" EntityType="Self.Balance" />
+          <EntitySet Name="Currencies" EntityType="Self.Currency" />
+          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+          <FunctionImport Name="GetBalance" ReturnType="Collection(AdventureWorks2012Model.GetBalance_Result)">
+            <Parameter Name="accountNumber" Mode="In" Type="Int64" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetBalance_Result">
+          <Property Type="Int64" Name="AccountNumber" Nullable="false" />
+          <Property Type="Decimal" Name="Balance" Nullable="false" Precision="18" Scale="3" />
+          <Property Type="String" Name="Currency" Nullable="false" MaxLength="3" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdventureWorks2012ModelStoreContainer" CdmEntityContainer="AdventureWorks2012Entities">
+          <EntitySetMapping Name="Accounts">
+            <EntityTypeMapping TypeName="AdventureWorks2012Model.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Balances">
+            <EntityTypeMapping TypeName="AdventureWorks2012Model.Balance">
+              <MappingFragment StoreEntitySet="Balance">
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="Balance1" ColumnName="Balance" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="AdventureWorks2012Model.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="Currency1" ColumnName="Currency" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transactions">
+            <EntityTypeMapping TypeName="AdventureWorks2012Model.Transaction">
+              <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetBalance" FunctionName="AdventureWorks2012Model.Store.GetBalance">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AdventureWorks2012Model.GetBalance_Result">
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
