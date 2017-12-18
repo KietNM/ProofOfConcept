@@ -5,6 +5,7 @@
     {
         public ActionResult Index()
         {
+            // WebServiceHost host = new WebServiceHost();
             AccountService.AccountServiceClient ur = new AccountService.AccountServiceClient();
             var result = ur.GetBalance(11111111);
 
