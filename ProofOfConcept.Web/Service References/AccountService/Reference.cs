@@ -32,10 +32,10 @@ namespace ProofOfConcept.Web.AccountService {
         private string CurrencyField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string MessageField;
+        private bool SuccessfulField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool SuccessfulField;
+        private string TypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -87,19 +87,6 @@ namespace ProofOfConcept.Web.AccountService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Message {
-            get {
-                return this.MessageField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MessageField, value) != true)) {
-                    this.MessageField = value;
-                    this.RaisePropertyChanged("Message");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public bool Successful {
             get {
                 return this.SuccessfulField;
@@ -108,6 +95,112 @@ namespace ProofOfConcept.Web.AccountService {
                 if ((this.SuccessfulField.Equals(value) != true)) {
                     this.SuccessfulField = value;
                     this.RaisePropertyChanged("Successful");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Transaction", Namespace="http://schemas.datacontract.org/2004/07/ProofOfConcept.WcfService.DataContract")]
+    [System.SerializableAttribute()]
+    public partial class Transaction : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int AccountNumberField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private decimal AmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CurrencyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int AccountNumber {
+            get {
+                return this.AccountNumberField;
+            }
+            set {
+                if ((this.AccountNumberField.Equals(value) != true)) {
+                    this.AccountNumberField = value;
+                    this.RaisePropertyChanged("AccountNumber");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public decimal Amount {
+            get {
+                return this.AmountField;
+            }
+            set {
+                if ((this.AmountField.Equals(value) != true)) {
+                    this.AmountField = value;
+                    this.RaisePropertyChanged("Amount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Currency {
+            get {
+                return this.CurrencyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CurrencyField, value) != true)) {
+                    this.CurrencyField = value;
+                    this.RaisePropertyChanged("Currency");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TypeField, value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
                 }
             }
         }
@@ -123,26 +216,32 @@ namespace ProofOfConcept.Web.AccountService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://localhost", ConfigurationName="AccountService.IAccountService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AccountService.IAccountService")]
     public interface IAccountService {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/IAccountService/GetBalance", ReplyAction="http://localhost/IAccountService/GetBalanceResponse")]
-        ProofOfConcept.Web.AccountService.RequestResponse GetBalance(int accountNumber);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/GetBalance", ReplyAction="http://tempuri.org/IAccountService/GetBalanceResponse")]
+        ProofOfConcept.Web.AccountService.RequestResponse GetBalance(int account);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/IAccountService/GetBalance", ReplyAction="http://localhost/IAccountService/GetBalanceResponse")]
-        System.Threading.Tasks.Task<ProofOfConcept.Web.AccountService.RequestResponse> GetBalanceAsync(int accountNumber);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IAccountService/GetBalance", ReplyAction="http://tempuri.org/IAccountService/GetBalanceResponse")]
+        System.IAsyncResult BeginGetBalance(int account, System.AsyncCallback callback, object asyncState);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/IAccountService/InvokeDeposit", ReplyAction="http://localhost/IAccountService/InvokeDepositResponse")]
-        ProofOfConcept.Web.AccountService.RequestResponse InvokeDeposit(int accountNumber, decimal amount, string currency);
+        ProofOfConcept.Web.AccountService.RequestResponse EndGetBalance(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/IAccountService/InvokeDeposit", ReplyAction="http://localhost/IAccountService/InvokeDepositResponse")]
-        System.Threading.Tasks.Task<ProofOfConcept.Web.AccountService.RequestResponse> InvokeDepositAsync(int accountNumber, decimal amount, string currency);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/InvokeDeposit", ReplyAction="http://tempuri.org/IAccountService/InvokeDepositResponse")]
+        ProofOfConcept.Web.AccountService.RequestResponse InvokeDeposit(ProofOfConcept.Web.AccountService.Transaction transaction);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/IAccountService/InvokeWithdraw", ReplyAction="http://localhost/IAccountService/InvokeWithdrawResponse")]
-        ProofOfConcept.Web.AccountService.RequestResponse InvokeWithdraw(int accountNumber, decimal amount, string currency);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IAccountService/InvokeDeposit", ReplyAction="http://tempuri.org/IAccountService/InvokeDepositResponse")]
+        System.IAsyncResult BeginInvokeDeposit(ProofOfConcept.Web.AccountService.Transaction transaction, System.AsyncCallback callback, object asyncState);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://localhost/IAccountService/InvokeWithdraw", ReplyAction="http://localhost/IAccountService/InvokeWithdrawResponse")]
-        System.Threading.Tasks.Task<ProofOfConcept.Web.AccountService.RequestResponse> InvokeWithdrawAsync(int accountNumber, decimal amount, string currency);
+        ProofOfConcept.Web.AccountService.RequestResponse EndInvokeDeposit(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccountService/InvokeWithdraw", ReplyAction="http://tempuri.org/IAccountService/InvokeWithdrawResponse")]
+        ProofOfConcept.Web.AccountService.RequestResponse InvokeWithdraw(ProofOfConcept.Web.AccountService.Transaction transaction);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IAccountService/InvokeWithdraw", ReplyAction="http://tempuri.org/IAccountService/InvokeWithdrawResponse")]
+        System.IAsyncResult BeginInvokeWithdraw(ProofOfConcept.Web.AccountService.Transaction transaction, System.AsyncCallback callback, object asyncState);
+        
+        ProofOfConcept.Web.AccountService.RequestResponse EndInvokeWithdraw(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -151,7 +250,82 @@ namespace ProofOfConcept.Web.AccountService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetBalanceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetBalanceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public ProofOfConcept.Web.AccountService.RequestResponse Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((ProofOfConcept.Web.AccountService.RequestResponse)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InvokeDepositCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public InvokeDepositCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public ProofOfConcept.Web.AccountService.RequestResponse Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((ProofOfConcept.Web.AccountService.RequestResponse)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InvokeWithdrawCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public InvokeWithdrawCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public ProofOfConcept.Web.AccountService.RequestResponse Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((ProofOfConcept.Web.AccountService.RequestResponse)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class AccountServiceClient : System.ServiceModel.ClientBase<ProofOfConcept.Web.AccountService.IAccountService>, ProofOfConcept.Web.AccountService.IAccountService {
+        
+        private BeginOperationDelegate onBeginGetBalanceDelegate;
+        
+        private EndOperationDelegate onEndGetBalanceDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetBalanceCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginInvokeDepositDelegate;
+        
+        private EndOperationDelegate onEndInvokeDepositDelegate;
+        
+        private System.Threading.SendOrPostCallback onInvokeDepositCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginInvokeWithdrawDelegate;
+        
+        private EndOperationDelegate onEndInvokeWithdrawDelegate;
+        
+        private System.Threading.SendOrPostCallback onInvokeWithdrawCompletedDelegate;
         
         public AccountServiceClient() {
         }
@@ -172,28 +346,160 @@ namespace ProofOfConcept.Web.AccountService {
                 base(binding, remoteAddress) {
         }
         
-        public ProofOfConcept.Web.AccountService.RequestResponse GetBalance(int accountNumber) {
-            return base.Channel.GetBalance(accountNumber);
+        public event System.EventHandler<GetBalanceCompletedEventArgs> GetBalanceCompleted;
+        
+        public event System.EventHandler<InvokeDepositCompletedEventArgs> InvokeDepositCompleted;
+        
+        public event System.EventHandler<InvokeWithdrawCompletedEventArgs> InvokeWithdrawCompleted;
+        
+        public ProofOfConcept.Web.AccountService.RequestResponse GetBalance(int account) {
+            return base.Channel.GetBalance(account);
         }
         
-        public System.Threading.Tasks.Task<ProofOfConcept.Web.AccountService.RequestResponse> GetBalanceAsync(int accountNumber) {
-            return base.Channel.GetBalanceAsync(accountNumber);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginGetBalance(int account, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetBalance(account, callback, asyncState);
         }
         
-        public ProofOfConcept.Web.AccountService.RequestResponse InvokeDeposit(int accountNumber, decimal amount, string currency) {
-            return base.Channel.InvokeDeposit(accountNumber, amount, currency);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public ProofOfConcept.Web.AccountService.RequestResponse EndGetBalance(System.IAsyncResult result) {
+            return base.Channel.EndGetBalance(result);
         }
         
-        public System.Threading.Tasks.Task<ProofOfConcept.Web.AccountService.RequestResponse> InvokeDepositAsync(int accountNumber, decimal amount, string currency) {
-            return base.Channel.InvokeDepositAsync(accountNumber, amount, currency);
+        private System.IAsyncResult OnBeginGetBalance(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int account = ((int)(inValues[0]));
+            return this.BeginGetBalance(account, callback, asyncState);
         }
         
-        public ProofOfConcept.Web.AccountService.RequestResponse InvokeWithdraw(int accountNumber, decimal amount, string currency) {
-            return base.Channel.InvokeWithdraw(accountNumber, amount, currency);
+        private object[] OnEndGetBalance(System.IAsyncResult result) {
+            ProofOfConcept.Web.AccountService.RequestResponse retVal = this.EndGetBalance(result);
+            return new object[] {
+                    retVal};
         }
         
-        public System.Threading.Tasks.Task<ProofOfConcept.Web.AccountService.RequestResponse> InvokeWithdrawAsync(int accountNumber, decimal amount, string currency) {
-            return base.Channel.InvokeWithdrawAsync(accountNumber, amount, currency);
+        private void OnGetBalanceCompleted(object state) {
+            if ((this.GetBalanceCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetBalanceCompleted(this, new GetBalanceCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetBalanceAsync(int account) {
+            this.GetBalanceAsync(account, null);
+        }
+        
+        public void GetBalanceAsync(int account, object userState) {
+            if ((this.onBeginGetBalanceDelegate == null)) {
+                this.onBeginGetBalanceDelegate = new BeginOperationDelegate(this.OnBeginGetBalance);
+            }
+            if ((this.onEndGetBalanceDelegate == null)) {
+                this.onEndGetBalanceDelegate = new EndOperationDelegate(this.OnEndGetBalance);
+            }
+            if ((this.onGetBalanceCompletedDelegate == null)) {
+                this.onGetBalanceCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetBalanceCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetBalanceDelegate, new object[] {
+                        account}, this.onEndGetBalanceDelegate, this.onGetBalanceCompletedDelegate, userState);
+        }
+        
+        public ProofOfConcept.Web.AccountService.RequestResponse InvokeDeposit(ProofOfConcept.Web.AccountService.Transaction transaction) {
+            return base.Channel.InvokeDeposit(transaction);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginInvokeDeposit(ProofOfConcept.Web.AccountService.Transaction transaction, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginInvokeDeposit(transaction, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public ProofOfConcept.Web.AccountService.RequestResponse EndInvokeDeposit(System.IAsyncResult result) {
+            return base.Channel.EndInvokeDeposit(result);
+        }
+        
+        private System.IAsyncResult OnBeginInvokeDeposit(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            ProofOfConcept.Web.AccountService.Transaction transaction = ((ProofOfConcept.Web.AccountService.Transaction)(inValues[0]));
+            return this.BeginInvokeDeposit(transaction, callback, asyncState);
+        }
+        
+        private object[] OnEndInvokeDeposit(System.IAsyncResult result) {
+            ProofOfConcept.Web.AccountService.RequestResponse retVal = this.EndInvokeDeposit(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnInvokeDepositCompleted(object state) {
+            if ((this.InvokeDepositCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.InvokeDepositCompleted(this, new InvokeDepositCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void InvokeDepositAsync(ProofOfConcept.Web.AccountService.Transaction transaction) {
+            this.InvokeDepositAsync(transaction, null);
+        }
+        
+        public void InvokeDepositAsync(ProofOfConcept.Web.AccountService.Transaction transaction, object userState) {
+            if ((this.onBeginInvokeDepositDelegate == null)) {
+                this.onBeginInvokeDepositDelegate = new BeginOperationDelegate(this.OnBeginInvokeDeposit);
+            }
+            if ((this.onEndInvokeDepositDelegate == null)) {
+                this.onEndInvokeDepositDelegate = new EndOperationDelegate(this.OnEndInvokeDeposit);
+            }
+            if ((this.onInvokeDepositCompletedDelegate == null)) {
+                this.onInvokeDepositCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInvokeDepositCompleted);
+            }
+            base.InvokeAsync(this.onBeginInvokeDepositDelegate, new object[] {
+                        transaction}, this.onEndInvokeDepositDelegate, this.onInvokeDepositCompletedDelegate, userState);
+        }
+        
+        public ProofOfConcept.Web.AccountService.RequestResponse InvokeWithdraw(ProofOfConcept.Web.AccountService.Transaction transaction) {
+            return base.Channel.InvokeWithdraw(transaction);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginInvokeWithdraw(ProofOfConcept.Web.AccountService.Transaction transaction, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginInvokeWithdraw(transaction, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public ProofOfConcept.Web.AccountService.RequestResponse EndInvokeWithdraw(System.IAsyncResult result) {
+            return base.Channel.EndInvokeWithdraw(result);
+        }
+        
+        private System.IAsyncResult OnBeginInvokeWithdraw(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            ProofOfConcept.Web.AccountService.Transaction transaction = ((ProofOfConcept.Web.AccountService.Transaction)(inValues[0]));
+            return this.BeginInvokeWithdraw(transaction, callback, asyncState);
+        }
+        
+        private object[] OnEndInvokeWithdraw(System.IAsyncResult result) {
+            ProofOfConcept.Web.AccountService.RequestResponse retVal = this.EndInvokeWithdraw(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnInvokeWithdrawCompleted(object state) {
+            if ((this.InvokeWithdrawCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.InvokeWithdrawCompleted(this, new InvokeWithdrawCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void InvokeWithdrawAsync(ProofOfConcept.Web.AccountService.Transaction transaction) {
+            this.InvokeWithdrawAsync(transaction, null);
+        }
+        
+        public void InvokeWithdrawAsync(ProofOfConcept.Web.AccountService.Transaction transaction, object userState) {
+            if ((this.onBeginInvokeWithdrawDelegate == null)) {
+                this.onBeginInvokeWithdrawDelegate = new BeginOperationDelegate(this.OnBeginInvokeWithdraw);
+            }
+            if ((this.onEndInvokeWithdrawDelegate == null)) {
+                this.onEndInvokeWithdrawDelegate = new EndOperationDelegate(this.OnEndInvokeWithdraw);
+            }
+            if ((this.onInvokeWithdrawCompletedDelegate == null)) {
+                this.onInvokeWithdrawCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInvokeWithdrawCompleted);
+            }
+            base.InvokeAsync(this.onBeginInvokeWithdrawDelegate, new object[] {
+                        transaction}, this.onEndInvokeWithdrawDelegate, this.onInvokeWithdrawCompletedDelegate, userState);
         }
     }
 }

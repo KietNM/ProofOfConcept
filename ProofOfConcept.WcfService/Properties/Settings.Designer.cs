@@ -22,15 +22,5 @@ namespace ProofOfConcept.WcfService.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:62537/AccountService.svc")]
-        public string ProofOfConcept_WcfService_localhost_AccountService {
-            get {
-                return ((string)(this["ProofOfConcept_WcfService_localhost_AccountService"]));
-            }
-        }
     }
 }

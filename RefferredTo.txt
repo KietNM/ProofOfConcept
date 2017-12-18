@@ -1,1 +1,4 @@
 1.https://stackoverflow.com/questions/11726209/wcf-restful-service-get-post
+https://www.codeproject.com/Articles/115054/Restful-Crud-Operation-on-a-WCF-Service
+Accessing Services Using a WCF Client
+https://docs.microsoft.com/en-us/dotnet/framework/wcf/accessing-services-using-a-wcf-client

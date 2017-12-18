@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="95a8305d-e6eb-4497-8513-09e4e3407542" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
-    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
-    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
     <ExcludedTypes />
     <ImportXmlTypes>false</ImportXmlTypes>
@@ -22,12 +21,11 @@
     <MetadataSource Address="http://localhost:62537/AccountService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="AccountService.wsdl" MetadataType="Wsdl" ID="e8622b21-c52a-477d-ad52-03906c8820ce" SourceId="1" SourceUrl="http://localhost:62537/AccountService.svc?wsdl=wsdl0" />
     <MetadataFile FileName="AccountService.disco" MetadataType="Disco" ID="ddba9843-1541-4e65-9838-dc020f304d0d" SourceId="1" SourceUrl="http://localhost:62537/AccountService.svc?disco" />
     <MetadataFile FileName="AccountService.xsd" MetadataType="Schema" ID="7b724256-f292-4c22-b2f9-c30a2a758d5c" SourceId="1" SourceUrl="http://localhost:62537/AccountService.svc?xsd=xsd0" />
+    <MetadataFile FileName="AccountService1.wsdl" MetadataType="Wsdl" ID="b897818e-fea1-4236-85f3-e601900dc1f7" SourceId="1" SourceUrl="http://localhost:62537/AccountService.svc?wsdl" />
     <MetadataFile FileName="AccountService1.xsd" MetadataType="Schema" ID="c65ac1d9-a42e-4116-8dd4-2e5553eae7f5" SourceId="1" SourceUrl="http://localhost:62537/AccountService.svc?xsd=xsd2" />
     <MetadataFile FileName="AccountService2.xsd" MetadataType="Schema" ID="2a7713ca-9098-4332-8d41-e4d05741b1b8" SourceId="1" SourceUrl="http://localhost:62537/AccountService.svc?xsd=xsd1" />
-    <MetadataFile FileName="AccountService1.wsdl" MetadataType="Wsdl" ID="b897818e-fea1-4236-85f3-e601900dc1f7" SourceId="1" SourceUrl="http://localhost:62537/AccountService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

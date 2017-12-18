@@ -4,20 +4,19 @@
     using System.ServiceModel;
     using System.ServiceModel.Web;
 
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
- 
+    [ServiceContract]
     public interface IAccountService
     {
         [OperationContract]
-        [WebGet]
-        RequestResponse GetBalance(int accountNumber);
+        [WebGet(UriTemplate = "account/{account}")]
+        RequestResponse GetBalance(int account);      
 
         [OperationContract]
-        [WebInvoke(Method = "PUT", RequestFormat = WebMessageFormat.Json)]
-        RequestResponse InvokeDeposit(int accountNumber, decimal amount, string currency);
+        [WebInvoke(Method = "PUT", UriTemplate = "account/deposit", RequestFormat = WebMessageFormat.Json)]
+        RequestResponse InvokeDeposit(Transaction transaction);
 
         [OperationContract]
-        [WebInvoke(Method = "PUT", RequestFormat = WebMessageFormat.Json)]
-        RequestResponse InvokeWithdraw(int accountNumber, decimal amount, string currency);
+        [WebInvoke(Method = "GET", UriTemplate = "account/withdraw", RequestFormat = WebMessageFormat.Json)]
+        RequestResponse InvokeWithdraw(Transaction transaction);
     }
 }
