@@ -2,12 +2,13 @@
 {
     using System.Runtime.Serialization;
     [DataContract]
-    public class RequestResponse
+    public class ServiceResponse
     {
-        int accountNumber;
-        bool successful = false;
+        int accountNumber;      
         decimal balance;
         string currency;
+        bool successful = false;
+        string code;
         string message;
 
         [DataMember]
@@ -15,13 +16,6 @@
         {
             get { return accountNumber; }
             set { accountNumber = value; }
-        }
-
-        [DataMember]
-        public bool Successful
-        {
-            get { return successful; }
-            set { successful = value; }
         }
 
         [DataMember]
@@ -36,6 +30,20 @@
         {
             get { return currency; }
             set { currency = value; }
+        }
+
+        [DataMember]
+        public bool Successful
+        {
+            get { return successful; }
+            set { successful = value; }
+        }
+
+        [DataMember]
+        public string Code
+        {
+            get { return code; }
+            set { code = value; }
         }
 
         [DataMember]

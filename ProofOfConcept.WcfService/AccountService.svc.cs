@@ -6,9 +6,9 @@
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single)]
     public class AccountService : IAccountService
     {       
-        public RequestResponse GetBalance(int account)
+        public ServiceResponse GetBalance(int account)
         {
-            RequestResponse balance = new RequestResponse();
+            ServiceResponse balance = new ServiceResponse();
             balance.AccountNumber = 11111111;
             balance.Balance = 10000000;
             balance.Currency = "USD";
@@ -17,9 +17,9 @@
             return balance;
         }
 
-        public RequestResponse InvokeDeposit(Transaction transaction)
+        public ServiceResponse InvokeDeposit(Transaction transaction)
         {
-            RequestResponse deposit = new RequestResponse();
+            ServiceResponse deposit = new ServiceResponse();
             deposit.AccountNumber = 55555555;
             deposit.Balance = 50000000;
             deposit.Currency = "USD";
@@ -28,9 +28,9 @@
             return deposit;
         }
 
-        public RequestResponse InvokeWithdraw(Transaction transaction)
+        public ServiceResponse InvokeWithdraw(Transaction transaction)
         {
-            RequestResponse withdraw = new RequestResponse();
+            ServiceResponse withdraw = new ServiceResponse();
             withdraw.AccountNumber = 99999999;
             withdraw.Balance = 90000000;
             withdraw.Currency = "USD";
