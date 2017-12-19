@@ -3,9 +3,9 @@
     using System;
     public class BalanceViewModel
     {
-        public int AccountNumber;
-        public decimal Balance;
-        public string Currency;
-        public DateTime UpdatedDate;
+        public int AccountNumber { get; set; }
+        public decimal Balance { get; set; }
+        public string Currency { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }

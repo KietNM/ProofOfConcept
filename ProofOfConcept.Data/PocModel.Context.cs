@@ -28,9 +28,9 @@ namespace ProofOfConcept.Data
         }
     
         public virtual DbSet<Account> Accounts { get; set; }
-        public virtual DbSet<Balance> Balances { get; set; }
-        public virtual DbSet<Currency> Currencies { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
+        public virtual DbSet<AccountBalance> AccountBalances { get; set; }
+        public virtual DbSet<CurrencyType> CurrencyTypes { get; set; }
     
         public virtual ObjectResult<GetBalance_Result> GetBalance(Nullable<long> accountNumber)
         {

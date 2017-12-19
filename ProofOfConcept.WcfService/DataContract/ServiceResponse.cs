@@ -4,53 +4,22 @@
     [DataContract]
     public class ServiceResponse
     {
-        int accountNumber;      
-        decimal balance;
-        string currency;
-        bool successful = false;
-        string code;
-        string message;
+        [DataMember]
+        public int AccountNumber { get; set; }
 
         [DataMember]
-        public int AccountNumber
-        {
-            get { return accountNumber; }
-            set { accountNumber = value; }
-        }
+        public decimal Balance { get; set; }
 
         [DataMember]
-        public decimal Balance
-        {
-            get { return balance; }
-            set { balance = value; }
-        }
+        public string Currency { get; set; }
 
         [DataMember]
-        public string Currency
-        {
-            get { return currency; }
-            set { currency = value; }
-        }
+        public bool Successful { get; set; }
 
         [DataMember]
-        public bool Successful
-        {
-            get { return successful; }
-            set { successful = value; }
-        }
+        public string Code { get; set; }
 
         [DataMember]
-        public string Code
-        {
-            get { return code; }
-            set { code = value; }
-        }
-
-        [DataMember]
-        public string Message
-        {
-            get { return message; }
-            set { message = value; }
-        }
+        public string Message { get; set; }
     }
 }

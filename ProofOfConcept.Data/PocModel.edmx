@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AdventureWorks2012Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AdventureWorks2012Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'AdventureWorks2012.Poc.Account' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Account">
@@ -14,20 +14,22 @@ warning 6002: The table/view 'AdventureWorks2012.Poc.Account' does not have a pr
           <Property Name="AccountNumber" Type="bigint" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'AdventureWorks2012.Poc.Balance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Balance">
+warning 6002: The table/view 'AdventureWorks2012.Poc.AccountBalance' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="AccountBalance">
           <Key>
             <PropertyRef Name="AccountNumber" />
             <PropertyRef Name="Balance" />
             <PropertyRef Name="Currency" />
+            <PropertyRef Name="UpdatedDate" />
           </Key>
           <Property Name="AccountNumber" Type="bigint" Nullable="false" />
           <Property Name="Balance" Type="decimal" Precision="18" Scale="3" Nullable="false" />
           <Property Name="Currency" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'AdventureWorks2012.Poc.Currency' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Currency">
+warning 6002: The table/view 'AdventureWorks2012.Poc.CurrencyType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CurrencyType">
           <Key>
             <PropertyRef Name="Currency" />
             <PropertyRef Name="Country" />
@@ -45,11 +47,13 @@ warning 6002: The table/view 'AdventureWorks2012.Poc.Transaction' does not have 
             <PropertyRef Name="Amount" />
             <PropertyRef Name="Currency" />
             <PropertyRef Name="Type" />
+            <PropertyRef Name="TransactionDate" />
           </Key>
           <Property Name="AccountNumber" Type="bigint" Nullable="false" />
           <Property Name="Amount" Type="decimal" Precision="18" Scale="3" Nullable="false" />
           <Property Name="Currency" Type="varchar" MaxLength="3" Nullable="false" />
           <Property Name="Type" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
         </EntityType>
         <Function Name="GetBalance" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Poc">
           <Parameter Name="accountNumber" Type="bigint" Mode="In" />
@@ -60,31 +64,32 @@ warning 6002: The table/view 'AdventureWorks2012.Poc.Transaction' does not have 
     [Account].[AccountNumber] AS [AccountNumber]
     FROM [Poc].[Account] AS [Account]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Balance" EntityType="Self.Balance" store:Type="Tables" store:Schema="Poc">
+          <EntitySet Name="AccountBalance" EntityType="Self.AccountBalance" store:Type="Tables" store:Schema="Poc">
             <DefiningQuery>SELECT 
-    [Balance].[AccountNumber] AS [AccountNumber], 
-    [Balance].[Balance] AS [Balance], 
-    [Balance].[Currency] AS [Currency]
-    FROM [Poc].[Balance] AS [Balance]</DefiningQuery>
+    [AccountBalance].[AccountNumber] AS [AccountNumber], 
+    [AccountBalance].[Balance] AS [Balance], 
+    [AccountBalance].[Currency] AS [Currency], 
+    [AccountBalance].[UpdatedDate] AS [UpdatedDate]
+    FROM [Poc].[AccountBalance] AS [AccountBalance]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Currency" EntityType="Self.Currency" store:Type="Tables" store:Schema="Poc">
+          <EntitySet Name="CurrencyType" EntityType="Self.CurrencyType" store:Type="Tables" store:Schema="Poc">
             <DefiningQuery>SELECT 
-    [Currency].[Currency] AS [Currency], 
-    [Currency].[Country] AS [Country], 
-    [Currency].[CurrencyName] AS [CurrencyName]
-    FROM [Poc].[Currency] AS [Currency]</DefiningQuery>
+    [CurrencyType].[Currency] AS [Currency], 
+    [CurrencyType].[Country] AS [Country], 
+    [CurrencyType].[CurrencyName] AS [CurrencyName]
+    FROM [Poc].[CurrencyType] AS [CurrencyType]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Transaction" EntityType="Self.Transaction" store:Type="Tables" store:Schema="Poc">
             <DefiningQuery>SELECT 
     [Transaction].[AccountNumber] AS [AccountNumber], 
     [Transaction].[Amount] AS [Amount], 
     [Transaction].[Currency] AS [Currency], 
-    [Transaction].[Type] AS [Type]
+    [Transaction].[Type] AS [Type], 
+    [Transaction].[TransactionDate] AS [TransactionDate]
     FROM [Poc].[Transaction] AS [Transaction]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AdventureWorks2012Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -92,27 +97,7 @@ warning 6002: The table/view 'AdventureWorks2012.Poc.Transaction' does not have 
           <Key>
             <PropertyRef Name="AccountNumber" />
           </Key>
-          <Property Name="AccountNumber" Type="Int64" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Balance">
-          <Key>
-            <PropertyRef Name="AccountNumber" />
-            <PropertyRef Name="Balance1" />
-            <PropertyRef Name="Currency" />
-          </Key>
-          <Property Name="AccountNumber" Type="Int64" Nullable="false" />
-          <Property Name="Balance1" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
-          <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Currency">
-          <Key>
-            <PropertyRef Name="Currency1" />
-            <PropertyRef Name="Country" />
-            <PropertyRef Name="CurrencyName" />
-          </Key>
-          <Property Name="Currency1" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Country" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CurrencyName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountNumber" Nullable="false" Type="Int64" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -120,26 +105,50 @@ warning 6002: The table/view 'AdventureWorks2012.Poc.Transaction' does not have 
             <PropertyRef Name="Amount" />
             <PropertyRef Name="Currency" />
             <PropertyRef Name="Type" />
+            <PropertyRef Name="TransactionDate" />
           </Key>
           <Property Name="AccountNumber" Type="Int64" Nullable="false" />
           <Property Name="Amount" Type="Decimal" Precision="18" Scale="3" Nullable="false" />
           <Property Name="Currency" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityContainer Name="AdventureWorks2012Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
-          <EntitySet Name="Balances" EntityType="Self.Balance" />
-          <EntitySet Name="Currencies" EntityType="Self.Currency" />
           <EntitySet Name="Transactions" EntityType="Self.Transaction" />
           <FunctionImport Name="GetBalance" ReturnType="Collection(AdventureWorks2012Model.GetBalance_Result)">
-            <Parameter Name="accountNumber" Mode="In" Type="Int64" />
+          <Parameter Name="accountNumber" Mode="In" Type="Int64" />
           </FunctionImport>
+          <EntitySet Name="AccountBalances" EntityType="AdventureWorks2012Model.AccountBalance" />
+          <EntitySet Name="CurrencyTypes" EntityType="AdventureWorks2012Model.CurrencyType" />
         </EntityContainer>
         <ComplexType Name="GetBalance_Result">
           <Property Type="Int64" Name="AccountNumber" Nullable="false" />
           <Property Type="Decimal" Name="Balance" Nullable="false" Precision="18" Scale="3" />
           <Property Type="String" Name="Currency" Nullable="false" MaxLength="3" />
         </ComplexType>
+        <EntityType Name="AccountBalance">
+          <Key>
+            <PropertyRef Name="AccountNumber" />
+            <PropertyRef Name="Balance" />
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="UpdatedDate" />
+          </Key>
+          <Property Name="AccountNumber" Type="Int64" Nullable="false" />
+          <Property Name="Balance" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="CurrencyType">
+          <Key>
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="Country" />
+            <PropertyRef Name="CurrencyName" />
+          </Key>
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CurrencyName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -153,27 +162,10 @@ warning 6002: The table/view 'AdventureWorks2012.Poc.Transaction' does not have 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Balances">
-            <EntityTypeMapping TypeName="AdventureWorks2012Model.Balance">
-              <MappingFragment StoreEntitySet="Balance">
-                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
-                <ScalarProperty Name="Balance1" ColumnName="Balance" />
-                <ScalarProperty Name="Currency" ColumnName="Currency" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Currencies">
-            <EntityTypeMapping TypeName="AdventureWorks2012Model.Currency">
-              <MappingFragment StoreEntitySet="Currency">
-                <ScalarProperty Name="Currency1" ColumnName="Currency" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Transactions">
             <EntityTypeMapping TypeName="AdventureWorks2012Model.Transaction">
               <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
                 <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="Currency" ColumnName="Currency" />
@@ -190,7 +182,26 @@ warning 6002: The table/view 'AdventureWorks2012.Poc.Transaction' does not have 
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="AccountBalances">
+            <EntityTypeMapping TypeName="AdventureWorks2012Model.AccountBalance">
+              <MappingFragment StoreEntitySet="AccountBalance">
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="Balance" ColumnName="Balance" />
+                <ScalarProperty Name="AccountNumber" ColumnName="AccountNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CurrencyTypes">
+            <EntityTypeMapping TypeName="AdventureWorks2012Model.CurrencyType">
+              <MappingFragment StoreEntitySet="CurrencyType">
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

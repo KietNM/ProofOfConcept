@@ -55,10 +55,10 @@
     <Compile Include="Account.cs">
       <DependentUpon>PocModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Balance.cs">
+    <Compile Include="AccountBalance.cs">
       <DependentUpon>PocModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Currency.cs">
+    <Compile Include="CurrencyType.cs">
       <DependentUpon>PocModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBalance_Result.cs">

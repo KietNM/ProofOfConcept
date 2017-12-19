@@ -18,5 +18,6 @@ namespace ProofOfConcept.Data
         public decimal Amount { get; set; }
         public string Currency { get; set; }
         public string Type { get; set; }
+        public System.DateTime TransactionDate { get; set; }
     }
 }

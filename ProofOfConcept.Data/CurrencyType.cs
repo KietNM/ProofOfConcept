@@ -12,9 +12,9 @@ namespace ProofOfConcept.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class Currency
+    public partial class CurrencyType
     {
-        public string Currency1 { get; set; }
+        public string Currency { get; set; }
         public string Country { get; set; }
         public string CurrencyName { get; set; }
     }

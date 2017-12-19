@@ -3,38 +3,17 @@
     using System.Runtime.Serialization;
     [DataContract]
     public class Transaction
-    {
-        int accountNumber;       
-        decimal amount;
-        string currency;
-        string type;
+    {     
+        [DataMember]
+        public int AccountNumber { get; set; }
 
         [DataMember]
-        public int AccountNumber
-        {
-            get { return accountNumber; }
-            set { accountNumber = value; }
-        }
+        public decimal Amount { get; set; }
 
         [DataMember]
-        public decimal Amount
-        {
-            get { return amount; }
-            set { amount = value; }
-        }
+        public string Currency { get; set; }
 
         [DataMember]
-        public string Currency
-        {
-            get { return currency; }
-            set { currency = value; }
-        }
-
-        [DataMember]
-        public string Type
-        {
-            get { return type; }
-            set { type = value; }
-        }
+        public string Type { get; set; }
     }
 }
