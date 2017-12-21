@@ -1,5 +1,6 @@
 ﻿ namespace ProofOfConcept.WcfService
 {
+    using Core.ViewModels;
     using DataContract;
     using System.ServiceModel;
     using System.ServiceModel.Web;
@@ -8,15 +9,15 @@
     public interface IAccountService
     {
         [OperationContract]
-        [WebGet(UriTemplate = "account/{account}")]
-        ServiceResponse GetBalance(int account);      
+        [WebGet(UriTemplate = "account/{accountNumber}")]
+        ServiceResponse GetBalance(long accountNumber);
 
         [OperationContract]
-        [WebInvoke(Method = "PUT", UriTemplate = "account/deposit", RequestFormat = WebMessageFormat.Json)]
-        ServiceResponse InvokeDeposit(Transaction transaction);
+        [WebInvoke(Method = "POST", UriTemplate = "account/deposit", RequestFormat = WebMessageFormat.Json)]
+        ServiceResponse InvokeDeposit(long accountNumber, decimal Amount, string Currency);
 
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "account/withdraw", RequestFormat = WebMessageFormat.Json)]
-        ServiceResponse InvokeWithdraw(Transaction transaction);
+        [WebInvoke(Method = "POST", UriTemplate = "account/withdraw", RequestFormat = WebMessageFormat.Json)]
+        ServiceResponse InvokeWithdraw(long accountNumber, decimal Amount, string Currency);
     }
 }

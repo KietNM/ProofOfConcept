@@ -16,7 +16,7 @@ namespace ProofOfConcept.Data
     {
         public long AccountNumber { get; set; }
         public decimal Amount { get; set; }
-        public string Currency { get; set; }
+        public string CurrencyCode { get; set; }
         public string Type { get; set; }
         public System.DateTime TransactionDate { get; set; }
     }

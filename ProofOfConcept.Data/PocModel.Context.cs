@@ -27,10 +27,10 @@ namespace ProofOfConcept.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Account> Accounts { get; set; }
-        public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<AccountBalance> AccountBalances { get; set; }
-        public virtual DbSet<CurrencyType> CurrencyTypes { get; set; }
+        public virtual DbSet<BankAccount> BankAccounts { get; set; }
+        public virtual DbSet<Currency> Currencies { get; set; }
+        public virtual DbSet<Transaction> Transactions { get; set; }
     
         public virtual ObjectResult<GetBalance_Result> GetBalance(Nullable<long> accountNumber)
         {
@@ -39,6 +39,49 @@ namespace ProofOfConcept.Data
                 new ObjectParameter("accountNumber", typeof(long));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetBalance_Result>("GetBalance", accountNumberParameter);
+        }
+    
+        public virtual ObjectResult<GetAccountBalance_Result> GetAccountBalance(Nullable<long> accountNumber)
+        {
+            var accountNumberParameter = accountNumber.HasValue ?
+                new ObjectParameter("accountNumber", accountNumber) :
+                new ObjectParameter("accountNumber", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetAccountBalance_Result>("GetAccountBalance", accountNumberParameter);
+        }
+    
+        public virtual ObjectResult<InsertDeposit_Result> InsertDeposit(Nullable<long> accountNumber, Nullable<decimal> amount, string currencyCode)
+        {
+            var accountNumberParameter = accountNumber.HasValue ?
+                new ObjectParameter("accountNumber", accountNumber) :
+                new ObjectParameter("accountNumber", typeof(long));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("amount", amount) :
+                new ObjectParameter("amount", typeof(decimal));
+    
+            var currencyCodeParameter = currencyCode != null ?
+                new ObjectParameter("currencyCode", currencyCode) :
+                new ObjectParameter("currencyCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<InsertDeposit_Result>("InsertDeposit", accountNumberParameter, amountParameter, currencyCodeParameter);
+        }
+    
+        public virtual ObjectResult<InsertWithdraw_Result> InsertWithdraw(Nullable<long> accountNumber, Nullable<decimal> amount, string currencyCode, ObjectParameter result)
+        {
+            var accountNumberParameter = accountNumber.HasValue ?
+                new ObjectParameter("accountNumber", accountNumber) :
+                new ObjectParameter("accountNumber", typeof(long));
+    
+            var amountParameter = amount.HasValue ?
+                new ObjectParameter("amount", amount) :
+                new ObjectParameter("amount", typeof(decimal));
+    
+            var currencyCodeParameter = currencyCode != null ?
+                new ObjectParameter("currencyCode", currencyCode) :
+                new ObjectParameter("currencyCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<InsertWithdraw_Result>("InsertWithdraw", accountNumberParameter, amountParameter, currencyCodeParameter, result);
         }
     }
 }

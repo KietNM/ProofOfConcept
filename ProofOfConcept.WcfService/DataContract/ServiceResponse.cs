@@ -5,7 +5,7 @@
     public class ServiceResponse
     {
         [DataMember]
-        public int AccountNumber { get; set; }
+        public long AccountNumber { get; set; }
 
         [DataMember]
         public decimal Balance { get; set; }

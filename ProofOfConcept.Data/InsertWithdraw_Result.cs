@@ -10,9 +10,8 @@
 namespace ProofOfConcept.Data
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class AccountBalance
+    public partial class InsertWithdraw_Result
     {
         public long AccountNumber { get; set; }
         public decimal Balance { get; set; }

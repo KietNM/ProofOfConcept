@@ -52,16 +52,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs">
-      <DependentUpon>PocModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="AccountBalance.cs">
       <DependentUpon>PocModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="CurrencyType.cs">
+    <Compile Include="BankAccount.cs">
+      <DependentUpon>PocModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Currency.cs">
+      <DependentUpon>PocModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetAccountBalance_Result.cs">
       <DependentUpon>PocModel.tt</DependentUpon>
     </Compile>
     <Compile Include="GetBalance_Result.cs">
+      <DependentUpon>PocModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InsertDeposit_Result.cs">
+      <DependentUpon>PocModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InsertWithdraw_Result.cs">
       <DependentUpon>PocModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PocModel.Context.cs">

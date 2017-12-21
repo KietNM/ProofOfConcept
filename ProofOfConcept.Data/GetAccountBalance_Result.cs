@@ -10,10 +10,12 @@
 namespace ProofOfConcept.Data
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Account
+    public partial class GetAccountBalance_Result
     {
         public long AccountNumber { get; set; }
+        public decimal Balance { get; set; }
+        public string CurrencyCode { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
     }
 }

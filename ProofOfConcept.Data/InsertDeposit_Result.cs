@@ -10,12 +10,12 @@
 namespace ProofOfConcept.Data
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CurrencyType
+    public partial class InsertDeposit_Result
     {
-        public string Currency { get; set; }
-        public string Country { get; set; }
-        public string CurrencyName { get; set; }
+        public long AccountNumber { get; set; }
+        public decimal Balance { get; set; }
+        public string CurrencyCode { get; set; }
+        public System.DateTime ModifiedDate { get; set; }
     }
 }

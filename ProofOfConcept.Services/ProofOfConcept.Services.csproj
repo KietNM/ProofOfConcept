@@ -45,7 +45,16 @@
     <Compile Include="Interface\IAccountService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ProofOfConcept.Core\ProofOfConcept.Core.csproj">
+      <Project>{D8BC8437-00D7-44EB-93D3-29A1DBB0F62E}</Project>
+      <Name>ProofOfConcept.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProofOfConcept.Web\ProofOfConcept.Web.csproj">
+      <Project>{6F8AD075-FDF3-4DE0-AE70-3A3E33406961}</Project>
+      <Name>ProofOfConcept.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
