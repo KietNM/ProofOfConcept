@@ -1,1 +1,26 @@
-"# ProofOfConcept" 
+A. Script to create database 
+	ProofOfConcept\ProofOfConcept.Data\Scripts\script_poc_database.sql
+B. Link to research
+	1. https://stackoverflow.com/questions/11726209/wcf-restful-service-get-post
+
+	2. https://www.codeproject.com/Articles/115054/Restful-Crud-Operation-on-a-WCF-Service
+
+	Accessing Services Using a WCF Client
+	3. https://docs.microsoft.com/en-us/dotnet/framework/wcf/accessing-services-using-a-wcf-client
+
+	4. Scalability: How does splitting a database table work on different replicated SQL Servers?
+	https://softwareengineering.stackexchange.com/questions/184753/scalability-how-does-splitting-a-database-table-work-on-different-replicated-sq
+
+	5. Creating Distributed Partitioned Views
+	https://msdn.microsoft.com/en-us/library/ms188299.aspx
+
+	6. Contention, poor performance, and deadlocks when you make calls to Web services from an ASP.NET application
+	https://support.microsoft.com/en-us/help/821268/contention--poor-performance--and-deadlocks-when-you-make-calls-to-web
+
+	7.Concurrency and Throttling Configurations for WCF Services
+	http://www.itprotoday.com/microsoft-visual-studio/concurrency-and-throttling-configurations-wcf-services
+
+	8. SQL Server Concurrency: Locking, Blocking and Row Versioning
+	https://www.red-gate.com/simple-talk/books/sql-books/sql-server-concurrency-locking-blocking-and-row-versioning/
+
+C. Thank for your reading.
