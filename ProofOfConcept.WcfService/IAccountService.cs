@@ -1,6 +1,5 @@
-﻿ namespace ProofOfConcept.WcfService
+﻿namespace ProofOfConcept.WcfService
 {
-    using Core.ViewModels;
     using DataContract;
     using System.ServiceModel;
     using System.ServiceModel.Web;

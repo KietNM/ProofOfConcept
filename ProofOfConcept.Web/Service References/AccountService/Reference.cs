@@ -26,10 +26,7 @@ namespace ProofOfConcept.Web.AccountService {
         private long AccountNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private decimal BalanceField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CodeField;
+        private System.Nullable<decimal> BalanceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CurrencyField;
@@ -64,7 +61,7 @@ namespace ProofOfConcept.Web.AccountService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public decimal Balance {
+        public System.Nullable<decimal> Balance {
             get {
                 return this.BalanceField;
             }
@@ -72,19 +69,6 @@ namespace ProofOfConcept.Web.AccountService {
                 if ((this.BalanceField.Equals(value) != true)) {
                     this.BalanceField = value;
                     this.RaisePropertyChanged("Balance");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Code {
-            get {
-                return this.CodeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CodeField, value) != true)) {
-                    this.CodeField = value;
-                    this.RaisePropertyChanged("Code");
                 }
             }
         }

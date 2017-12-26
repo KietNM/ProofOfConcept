@@ -139,6 +139,10 @@
       <Project>{86F444E3-1C09-4590-8946-F4781BF0C818}</Project>
       <Name>ProofOfConcept.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ProofOfConcept.Shareds\ProofOfConcept.Shareds.csproj">
+      <Project>{6a631272-d096-4aa1-9765-341e92818042}</Project>
+      <Name>ProofOfConcept.Shareds</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

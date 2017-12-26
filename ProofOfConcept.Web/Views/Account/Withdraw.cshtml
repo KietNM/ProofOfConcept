@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "ProofOfConcept";
+}
+<div class="container">
+    <br />
+    <div class="row col-sm-9">
+        <div class="row col-sm-9">
+            <div class="col-sm-3"><label for="usr">Account Number</label></div>
+            <div class="col-sm-6"><input type="text" id="accountNumber"></div>
+        </div>
+        <div class="row col-sm-9">
+            <div class="col-sm-3"><label for="usr">Amount</label></div>
+            <div class="col-sm-6"><input type="text" id="amount"></div>
+        </div>
+        <div class="row col-sm-9">
+            <div class="col-sm-3"><label for="usr">Currency</label></div>
+            <div class="col-sm-6"><input id="currency" readonly value="USD"></div>
+        </div>
+    </div>
+    <br />
+    <div class="row col-sm-9">
+        <div class="col-sm-3"><button class="btn btn-add" onclick="invokeWithdraw()">Withdraw</button></div>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <br /><br />
+    <div class="row col-sm-9">
+        <div class="row col-sm-9">
+            <div class="col-sm-3"><label for="usr">Account Number</label></div>
+            <div class="col-sm-6"><input readonly id="rsAcountNumber"></div>
+        </div>
+        <div class="row col-sm-9">
+            <div class="col-sm-3"><label for="usr">Balance</label></div>
+            <div class="col-sm-6"><input readonly id="rsBalance"></div>
+        </div>
+        <div class="row col-sm-9">
+            <div class="col-sm-3"><label for="usr">Currency</label></div>
+            <div class="col-sm-6"><input readonly id="rsCurrency"></div>
+        </div>
+        <div class="row col-sm-9">
+            <div class="col-sm-3"><label for="usr">Successful</label></div>
+            <div class="col-sm-6"><input readonly id="rsSuccessful"></div>
+        </div>
+        <div class="row col-sm-9">
+            <div class="col-sm-3"><label for="usr">Message</label></div>
+            <div class="col-sm-6"><input readonly id="rsMessage"></div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        const url = '@Url.Action("InvokeWithdraw", "Account")';
+        $(function () {
+            $("#accountNumber").first().focus();
+        });
+
+        var invokeWithdraw = function () {
+            var accountNumber = $("#accountNumber").val();
+            var amount = $("#amount").val();
+            var currency = $("#currency").val();
+            if (!accountNumber || !amount || !currency) {
+                return;
+            }
+            var data = {
+                accountNumber: accountNumber,
+                amount: amount,
+                currency: currency
+            }
+            $.ajax({
+                url: url,
+                type: "POST",
+                data: data,
+                success: function (result) {
+                    $("#rsAcountNumber").val(result.AccountNumber)
+                    $("#rsBalance").val(result.Balance)
+                    $("#rsCurrency").val(result.Currency)
+                    $("#rsSuccessful").val(result.Successful)
+                    $("#rsMessage").val(result.Message)
+                }
+            });
+        }
+    </script>
+}

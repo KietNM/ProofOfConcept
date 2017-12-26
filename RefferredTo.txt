@@ -16,3 +16,6 @@ https://support.microsoft.com/en-us/help/821268/contention--poor-performance--an
 
 7.Concurrency and Throttling Configurations for WCF Services
 http://www.itprotoday.com/microsoft-visual-studio/concurrency-and-throttling-configurations-wcf-services
+
+8. SQL Server Concurrency: Locking, Blocking and Row Versioning
+https://www.red-gate.com/simple-talk/books/sql-books/sql-server-concurrency-locking-blocking-and-row-versioning/

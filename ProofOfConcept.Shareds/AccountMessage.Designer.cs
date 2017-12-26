@@ -22,24 +22,24 @@ namespace ProofOfConcept.Shareds {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Account {
+    public class AccountMessage {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Account() {
+        internal AccountMessage() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProofOfConcept.Shareds.Account", typeof(Account).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ProofOfConcept.Shareds.AccountMessage", typeof(AccountMessage).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace ProofOfConcept.Shareds {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,29 +61,56 @@ namespace ProofOfConcept.Shareds {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A withdraw request was be declined!.
+        ///   Looks up a localized string similar to Get balance is successful..
         /// </summary>
-        internal static string Declined {
+        public static string MSG001 {
             get {
-                return ResourceManager.GetString("Declined", resourceCulture);
+                return ResourceManager.GetString("MSG001", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failure!.
+        ///   Looks up a localized string similar to Balance not found..
         /// </summary>
-        internal static string Failure {
+        public static string MSG002 {
             get {
-                return ResourceManager.GetString("Failure", resourceCulture);
+                return ResourceManager.GetString("MSG002", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Successful!.
+        ///   Looks up a localized string similar to Deposit funds is successful..
         /// </summary>
-        internal static string Success {
+        public static string MSG003 {
             get {
-                return ResourceManager.GetString("Success", resourceCulture);
+                return ResourceManager.GetString("MSG003", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deposit funds is unsuccessful..
+        /// </summary>
+        public static string MSG004 {
+            get {
+                return ResourceManager.GetString("MSG004", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Withdraw is successful..
+        /// </summary>
+        public static string MSG005 {
+            get {
+                return ResourceManager.GetString("MSG005", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failure! Never have a negative balance..
+        /// </summary>
+        public static string MSG006 {
+            get {
+                return ResourceManager.GetString("MSG006", resourceCulture);
             }
         }
     }
